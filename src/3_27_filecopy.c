@@ -1,3 +1,10 @@
+/*************************
+ * Author:    TKONIY
+ * Date:      2020/10/11
+ * Platform:  WSL-ubuntu18.04
+ * Compiler:  gcc7.5.0
+ ************************/ 
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
