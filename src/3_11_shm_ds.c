@@ -22,8 +22,12 @@ void print_shm_ds(int segment_id) {
       "Owner UID------------%hu\n"
       "Size-----------------%ld\n"
       "Number of attaches---%ld\n",
-      segment_id, shmbuffer.shm_perm.__key, shmbuffer.shm_perm.mode,
-      shmbuffer.shm_perm.uid, shmbuffer.shm_segsz, shmbuffer.shm_nattch);
+      segment_id, 
+      shmbuffer.shm_perm.__key, 
+      shmbuffer.shm_perm.mode,
+      shmbuffer.shm_perm.uid, 
+      shmbuffer.shm_segsz, 
+      shmbuffer.shm_nattch);
 }
 
 int main() {

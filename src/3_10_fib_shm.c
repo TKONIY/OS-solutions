@@ -54,8 +54,9 @@ int main() {
     for (int i = 0; i < data->sequence_size; ++i) {
       printf("%ld ", data->fib_sequence[i]);
     }
-  };
+  }
 
   shmdt(data);
   shmctl(seg_id, IPC_RMID, NULL);
+  return 0;
 }

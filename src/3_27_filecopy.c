@@ -13,6 +13,7 @@
 #include <unistd.h>
 #define WRITE_END 1
 #define READ_END 0
+#define BUF_SIZE 1024
 
 void fail(const char* msg) {
   fprintf(stderr, "Faild: %s\n", msg);
@@ -33,10 +34,10 @@ int main(int argc, char** argv) {
     int out_fd = open(argv[2], O_WRONLY | O_CREAT, 666);
     if (out_fd == -1) fail("open output file error.");
 
-    char buf[16];
+    char buf[BUF_SIZE];
     int n;
     close(fd[WRITE_END]);
-    while ((n = read(fd[READ_END], buf, 16)) > 0) {
+    while ((n = read(fd[READ_END], buf, BUF_SIZE)) > 0) {
       write(out_fd, buf, n);
     }
     close(fd[READ_END]);
@@ -46,10 +47,10 @@ int main(int argc, char** argv) {
     int in_fd = open(argv[1], O_RDONLY);
     if (in_fd == -1) fail("open input file error.");
 
-    char buf[16];
+    char buf[BUF_SIZE];
     int n;
     close(fd[READ_END]);
-    while ((n = read(in_fd, buf, 16)) > 0) {
+    while ((n = read(in_fd, buf, BUF_SIZE)) > 0) {
       write(fd[WRITE_END], buf, n);
     }
     close(fd[WRITE_END]);
