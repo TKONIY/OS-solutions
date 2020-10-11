@@ -3,7 +3,7 @@
  * Date:      2020/10/11
  * Platform:  WSL-ubuntu18.04
  * Compiler:  gcc7.5.0
- ************************/ 
+ ************************/
 
 #include <sched.h>
 #include <stdio.h>
@@ -12,22 +12,16 @@
 #include <wait.h>
 
 void fib(int n) {
+  long dp[2] = {0, 1};
   if (n == 0) return;
-  if (n == 1) {
-    printf("0\n");
-    return;
-  }
+  printf("%ld ", dp[0]);
+  if (n == 1) return;
+  printf("%ld ", dp[1]);
 
-  long long *dp = malloc((n + 1) * sizeof(long long));
-  dp[0] = 0;
-  dp[1] = 1;
-  for (int i = 2; i < n; ++i) {
-    dp[i] = dp[i - 1] + dp[i - 2];
+  for (int i = 2, p = 0; i < n; ++i, p = (p + 1) % 2) {
+    dp[p] = dp[0] + dp[1];
+    printf("%ld ", dp[p]);
   }
-  for (int i = 0; i < n; ++i) {
-    printf("%lld ", dp[i]);
-  }
-  printf("\n");
 }
 
 int main() {
