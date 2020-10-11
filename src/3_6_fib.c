@@ -39,4 +39,5 @@ int main() {
   } else {
     wait(NULL);
   }
+  return 0;
 }
