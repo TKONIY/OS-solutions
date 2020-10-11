@@ -11,9 +11,10 @@
 #include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
+#include <wait.h>
 #define WRITE_END 1
 #define READ_END 0
-#define BUF_SIZE 1024
+#define BUF_SIZE 16
 
 void fail(const char* msg) {
   fprintf(stderr, "Faild: %s\n", msg);
@@ -55,6 +56,7 @@ int main(int argc, char** argv) {
     }
     close(fd[WRITE_END]);
     close(in_fd);
+    wait(NULL);
   }
   return 0;
 }
