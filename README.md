@@ -1,4 +1,4 @@
-#  Solutions for *Operating system concept*
+#  Solutions for *Operating system concepts*
 《操作系统概念》课后习题代码
 
 | Problem | Edition |            Solution            |
