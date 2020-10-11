@@ -4,7 +4,7 @@ SRC = src/
 BUILD = build/
 
 # all: $(BUILD)3_6_fib.out
-all : $(BUILD)3_10_fib_shm.out $(BUILD)3_6_fib.out $(BUILD)3_27_filecopy.out
+all : $(BUILD)3_10_fib_shm.out $(BUILD)3_6_fib.out $(BUILD)3_27_filecopy.out $(BUILD)3_11_shm_ds.out
 
 $(BUILD)3_6_fib.out: $(SRC)3_6_fib.c
 	$(CC) $(STD) $(SRC)3_6_fib.c -o $(BUILD)3_6_fib.out
@@ -15,6 +15,8 @@ $(BUILD)3_10_fib_shm.out: $(SRC)3_10_fib_shm.c
 $(BUILD)3_27_filecopy.out: $(SRC)3_27_filecopy.c
 	$(CC) $(STD) $(SRC)3_27_filecopy.c -o $(BUILD)3_27_filecopy.out
 
+$(BUILD)3_11_shm_ds.out: $(SRC)3_11_shm_ds.c
+	$(CC) $(STD) $(SRC)3_11_shm_ds.c -o $(BUILD)3_11_shm_ds.out
 
 .PHONY:
 clean:
