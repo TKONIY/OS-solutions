@@ -16,8 +16,8 @@ void* print_primes(void* params) {
   /*此处不是重点, 仅使用大一学生方法实现,欢迎修改*/
   for (int i = 2; i <= max_n; ++i) {
     int is_prime = 1;
-    for (int j = 2; j < sqrt(i); ++j) {
-      if (!(max_n % j)) {
+    for (int j = 2; j <= sqrt(i); ++j) {
+      if (!(i % j)) {
         is_prime = 0;
         break;
       }
