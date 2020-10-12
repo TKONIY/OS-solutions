@@ -10,6 +10,7 @@
 #include <memory.h>
 #include <pthread.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void* print_primes(void* params) {
   int max_n = *(int*)params;
@@ -27,11 +28,12 @@ void* print_primes(void* params) {
   pthread_exit(0);
 }
 
-int main() {
+int main(int argc, char** argv) {
   int max_n;
-  printf("Please input number:\n");
-  scanf("%d", &max_n);
-
+  if (argc == 1 || (max_n = atoi(argv[1])) <= 0) {
+    printf("Please input a positive number.\n");
+    return -1;
+  }
   pthread_attr_t attr;
   pthread_attr_init(&attr);
   pthread_t tid;

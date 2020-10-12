@@ -3,16 +3,16 @@
  * Date:      2020/10/11
  * Platform:  WSL-ubuntu18.04
  * Compiler:  gcc7.5.0
- ************************/ 
+ ************************/
 
 #include <memory.h>
 #include <sched.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/shm.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <wait.h>
-#include <stdlib.h>
 
 #define MAX_SEQUENCE 10
 typedef struct {
@@ -32,12 +32,12 @@ void fib(shared_data *data) {
   }
 }
 
-int main() {
-  int n = -1;
-  do {
-    printf("please input %d >= n >= 0 :\n", MAX_SEQUENCE);
-    scanf("%d", &n);
-  } while (n < 0 || n > MAX_SEQUENCE);
+int main(int argc, char **argv) {
+  int n;
+  if (argc == 1 || (n = atoi(argv[1])) < 0 || n >= MAX_SEQUENCE) {
+    printf("please input %d > n >= 0.\n", MAX_SEQUENCE);
+    return -1;
+  }
 
   int seg_id = shmget(IPC_PRIVATE, sizeof(shared_data), S_IRUSR | S_IWUSR);
   shared_data *data = (shared_data *)shmat(seg_id, NULL, 0);

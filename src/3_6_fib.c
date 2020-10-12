@@ -24,17 +24,17 @@ void fib(int n) {
   }
 }
 
-int main() {
+int main(int argc, char** argv) {
+  int n;
+  if (argc == 1 || (n = atoi(argv[1])) < 0) {
+    fprintf(stderr, "please input an non-negitive number.\n");
+    return -1;
+  }
   pid_t pid = fork();
   if (pid < 0) {
     fprintf(stderr, "Fork Faild");
     exit(-1);
   } else if (pid == 0) {
-    int n = 0;
-    do {
-      printf("please input n >=0:\n");
-      scanf("%d", &n);
-    } while (n < 0);
     fib(n);
   } else {
     wait(NULL);
