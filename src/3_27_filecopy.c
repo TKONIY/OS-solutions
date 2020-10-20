@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
   if (pid < 0) {
     fail("fork error.");
   } else if (pid == 0) { /* child */
-    int out_fd = open(argv[2], O_WRONLY | O_CREAT, 666);
+    int out_fd = open(argv[2], O_WRONLY | O_CREAT, 666);  //参数666授予打开out_fd指向文件的权限，如果不加则没有权限来打开
     if (out_fd == -1) fail("open output file error.");
 
     char buf[BUF_SIZE];
