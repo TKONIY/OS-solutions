@@ -40,7 +40,7 @@ pthread_t create_thread(int detach_state, void* (*func)(void*)) {
 sem_t customers;  // 0 resource of waiting customers
 sem_t barbers;    // 0 resource of barber ( sleep at the begining)
 sem_t mutex;      // 1 lock the waiting counter
-int waiting;      // 0 count the waiting number
+int waiting = 0;  // 0 count the waiting number
 
 void cut_hair() {
   printf("waiting=%d barber cut a customer\n", waiting);
