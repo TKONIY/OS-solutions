@@ -1,10 +1,15 @@
-CC = gcc
-STD = -std=c99
+# CC = gcc
+CC = g++
+# STD = -std=c99
+STD = -std=c++17
 SRC = src/
 BUILD = build/
 
 # all: $(BUILD)3_6_fib.out
-all : $(BUILD)3_10_fib_shm.out $(BUILD)3_6_fib.out $(BUILD)3_27_filecopy.out $(BUILD)3_11_shm_ds.out $(BUILD)4_9_prime.out $(BUILD)6_11_sleep_barber.out
+# all : $(BUILD)3_10_fib_shm.out $(BUILD)3_6_fib.out $(BUILD)3_27_filecopy.out $(BUILD)3_11_shm_ds.out $(BUILD)4_9_prime.out $(BUILD)6_11_sleep_barber.out
+all : $(BUILD)6_13_bound_buffer_monitor.out
+$(BUILD)6_13_bound_buffer_monitor.out : $(SRC)6_13_bound_buffer_monitor.cpp
+	$(CC) $(STD) $(SRC)6_13_bound_buffer_monitor.cpp -o $(BUILD)6_13_bound_buffer_monitor.out
 
 $(BUILD)3_6_fib.out: $(SRC)3_6_fib.c
 	$(CC) $(STD) $(SRC)3_6_fib.c -o $(BUILD)3_6_fib.out
