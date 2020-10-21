@@ -7,8 +7,8 @@
 |  3.11   |   7th   |     [Linux](./src/3_11_shm_ds.c)     |
 |  3.10   |   7th   |    [Linux](./src/3_10_fib_shm.c)     |
 |  3.27   |   9th   |    [Linux](./src/3_27_filecopy.c)    |
-|   4.9   |   7th   |     [pthread](./src/4_9_prime.c)     |
-|  6.10   |   7th   | [pthread](./src/6_10_sleep_barber.c) |
+|   4.9   |   7th   |     [Linux](./src/4_9_prime.c)     |
+|  6.10   |   7th   | [Linux](./src/6_10_sleep_barber.c) |
 ## 贡献规则
 * 请务必提交编译通过的代码。文件头注释参考以下格式:
     ```
