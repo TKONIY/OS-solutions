@@ -42,7 +42,7 @@ int barrier_point() {
     sem_post(&mutex);
     sem_wait(&run);
   } else {
-    printf("release all\n");
+    // printf("release all\n"); // debug
     while (count > 0) {  // wake up others
       sem_post(&run);
       count--;
@@ -53,15 +53,18 @@ int barrier_point() {
 
 // threads using barrier for testing
 void* thread(void* args) {
-  printf("before barrier\n");
-  barrier_point();
-  printf("after barrier\n");
+  while (1) {
+    printf("before barrier\n");
+    barrier_point();
+    printf("after barrier\n");
+    sleep_us(0, 10000);
+  }
 }
 
 int main() {
   init(5);
   while (1) {
     create_thread(PTHREAD_CREATE_DETACHED, thread);
-    sleep_us(0, 100000);
+    sleep_us(0, 1000);
   }
 }
