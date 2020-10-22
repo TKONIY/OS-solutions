@@ -1,3 +1,9 @@
+/***************************************
+ * Author:    TKONIY
+ * Date:      2020/10/22
+ * Platform:  WSL-ubuntu18.04
+ * Compiler:  gcc7.5.0
+ ***************************************/
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdio.h>
