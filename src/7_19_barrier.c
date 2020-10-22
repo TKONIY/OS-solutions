@@ -37,6 +37,7 @@ int init(int n) {
   count = 0;
   if (-1 == sem_init(&mutex, 0, 1)) return -1;
   if (-1 == sem_init(&run, 0, 0)) return -1;
+  return 0;
 }
 
 int barrier_point() {
@@ -55,6 +56,7 @@ int barrier_point() {
     }
     sem_post(&mutex);  // wake up myself
   }
+  return 0;
 }
 
 // threads using barrier for testing
