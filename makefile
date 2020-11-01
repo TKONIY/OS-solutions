@@ -4,7 +4,7 @@ SRC = src/
 BUILD = build/
 
 # all: $(BUILD)3_6_fib.out
-all : $(BUILD)3_10_fib_shm.out $(BUILD)3_6_fib.out $(BUILD)3_27_filecopy.out $(BUILD)3_11_shm_ds.out $(BUILD)4_9_prime.out $(BUILD)6_11_sleep_barber.out $(BUILD)7_19_barrier.out
+all : $(BUILD)3_10_fib_shm.out $(BUILD)3_6_fib.out $(BUILD)3_27_filecopy.out $(BUILD)3_11_shm_ds.out $(BUILD)4_9_prime.out $(BUILD)6_11_sleep_barber.out $(BUILD)7_19_barrier.out $(BUILD)7_15_bridge.out
 
 $(BUILD)3_6_fib.out: $(SRC)3_6_fib.c
 	$(CC) $(STD) $(SRC)3_6_fib.c -o $(BUILD)3_6_fib.out
@@ -26,6 +26,9 @@ $(BUILD)6_11_sleep_barber.out: $(SRC)6_11_sleep_barber.c
 
 $(BUILD)7_19_barrier.out: $(SRC)7_19_barrier.c
 	$(CC) $(STD) $(SRC)7_19_barrier.c -o $(BUILD)7_19_barrier.out -lm -lpthread
+	
+$(BUILD)7_15_bridge.out: $(SRC)7_15_bridge.c
+	$(CC) $(STD) $(SRC)7_15_bridge.c -o $(BUILD)7_15_bridge.out -lm -lpthread
 
 .PHONY:
 clean:
