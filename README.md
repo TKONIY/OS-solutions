@@ -11,6 +11,7 @@
 |  6.11   |   7th   | [Linux](./src/6_11_sleep_barber.c) |
 |  7.19   |  10th   |   [Linux](./src/7_19_barrier.c)    |
 |  7.15   |   7th   |    [Linux](./src/7_15_bridge.c)    |
+|  9.12   |   7th   |   [Linux](./src/9_12_FIFO_LRU.c)   |
 ## 贡献规则
 * 请务必提交编译通过的代码。文件头注释参考以下格式:
     ```

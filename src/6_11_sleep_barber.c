@@ -1,9 +1,3 @@
-#include <pthread.h>
-#include <semaphore.h>
-#include <stdio.h>
-#include <sys/select.h>  //使用select实现微秒级定时器
-#include <unistd.h>
-
 /***************************************
  * Author:    TKONIY
  * Date:      2020/10/21
@@ -18,6 +12,12 @@
  *
  * 个人认为可以。
  ***************************************/
+
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdio.h>
+#include <sys/select.h>  //使用select实现微秒级定时器
+#include <unistd.h>
 
 // utils
 void sleep_us(long s, long us) {
@@ -57,25 +57,27 @@ void leave() { printf("waiting=%d a customer leaved\n", waiting); }
 
 void* barber(void* arg) {
   while (1) {
-    sem_wait(&customers);   // waiting for a customer, sleep
-    sem_wait(&mutex);       // lock "waiting"
-    waiting--;              // serve a waiting customer
-    sem_post(&barbers);     // notify someone to get in barber room and wait for him
-    sem_post(&mutex);       // unlock "waiting"
-    cut_hair();             // serve the customer
+    sem_wait(&customers);  // waiting for a customer, sleep
+    sem_wait(&mutex);      // lock "waiting"
+    waiting--;             // serve a waiting customer
+    sem_post(
+        &barbers);     // notify someone to get in barber room and wait for him
+    sem_post(&mutex);  // unlock "waiting"
+    cut_hair();        // serve the customer
   }
 }
 void* customer(void* arg) {
-  sem_wait(&mutex);         // lock "waiting"
-  if (waiting < CHAIRS) {  
-    waiting++;              // increase the waiting count
-    sem_post(&customers);   // signal a customer
-    sem_post(&mutex);       // unlock "waiting"
-    sem_wait(&barbers);     // wait for the barber's notification, ready to get in barber room
-    get_haircut();          // get hair cut
+  sem_wait(&mutex);  // lock "waiting"
+  if (waiting < CHAIRS) {
+    waiting++;             // increase the waiting count
+    sem_post(&customers);  // signal a customer
+    sem_post(&mutex);      // unlock "waiting"
+    sem_wait(&barbers);  // wait for the barber's notification, ready to get in
+                         // barber room
+    get_haircut();       // get hair cut
   } else {
-    sem_post(&mutex);       // unlock "waiting"
-    leave();                // leave the babershop
+    sem_post(&mutex);  // unlock "waiting"
+    leave();           // leave the babershop
   }
 }
 
@@ -83,9 +85,10 @@ int main() {
   sem_init(&customers, 0, 0);
   sem_init(&barbers, 0, 0);
   sem_init(&mutex, 0, 1);
-  create_thread(PTHREAD_CREATE_DETACHED, barber);       // create a barber
+  create_thread(PTHREAD_CREATE_DETACHED, barber);  // create a barber
   while (1) {
-    create_thread(PTHREAD_CREATE_DETACHED, customer);   // create a stream of customers
+    create_thread(PTHREAD_CREATE_DETACHED,
+                  customer);  // create a stream of customers
     sleep_us(0, 700000);
   }
 }
