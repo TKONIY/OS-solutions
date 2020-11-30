@@ -13,7 +13,7 @@ BUILD = build/
 # all :$(BUILD)7_19_barrier.out 
 # all :$(BUILD)7_15_bridge.out
 
-all : $(BUILD)9_12_FIFO_LRU.out
+all : $(BUILD)9_21_FIFO_LRU.out
 
 $(BUILD)3_6_fib.out: $(SRC)3_6_fib.c
 	$(CC) $(STD) $(SRC)3_6_fib.c -o $(BUILD)3_6_fib.out
@@ -39,8 +39,8 @@ $(BUILD)7_19_barrier.out: $(SRC)7_19_barrier.c
 $(BUILD)7_15_bridge.out: $(SRC)7_15_bridge.c
 	$(CC) $(STD) $(SRC)7_15_bridge.c -o $(BUILD)7_15_bridge.out -lm -lpthread
 
-$(BUILD)9_12_FIFO_LRU.out: $(SRC)9_12_FIFO_LRU.c
-	$(CC) $(STD) $(SRC)9_12_FIFO_LRU.c -o $(BUILD)9_12_FIFO_LRU.out 
+$(BUILD)9_21_FIFO_LRU.out: $(SRC)9_21_FIFO_LRU.c
+	$(CC) $(STD) $(SRC)9_21_FIFO_LRU.c -o $(BUILD)9_21_FIFO_LRU.out 
 
 .PHONY:
 clean:

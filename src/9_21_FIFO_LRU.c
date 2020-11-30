@@ -68,7 +68,7 @@ int FIFO(const int* ref, int n) {
       }
     }
     if (!found) {
-      frame_queue[front] = page_number;
+      frame_queue[front] = page_number; 
       front = (front + 1) % N_FRAME;  // page faults
       n_page_fault++;
     }
